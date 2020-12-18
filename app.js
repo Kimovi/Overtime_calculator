@@ -1,9 +1,15 @@
 // Need to add Empty input validation function
+// Add radiobutton to choose overtime rates 
+// To fix bugs occuring at responsive design 
 
 const salary = document.getElementById('salary1');
 let hourlyRate;
 let date = document.getElementById('date');
 let hours = document.getElementById('hours');
+const data = {
+    date : [],
+    hours : []
+}
 
 document.querySelector(".salary").addEventListener("click", function(){
     hourlyRate = parseInt(salary.value);
@@ -13,6 +19,6 @@ document.querySelector(".salary").addEventListener("click", function(){
 })
 
 document.querySelector(".Add").addEventListener("click", function(){
-    console.log(date.value, hours.value);
-
+    data.date.push(date.value);
+    data.hours.push(hours.value);    
 })

@@ -1,8 +1,56 @@
 body {
     font-family: 'Raleway', sans-serif;
-    background: rgb(34,193,195);
+    /* background: rgb(34,193,195); */
     background: linear-gradient(90deg, rgba(34,193,195,1) 0%, rgba(94,190,52,0.6110819327731092) 49%, rgba(253,187,45,1) 100%);
     text-align: center;
-    
 }
 
+@media only screen and (max-width: 600px) {
+    body {
+        background: linear-gradient(to right, rgba(34,193,195,1), rgba(253,187,45,1));
+    }
+    h1{
+        font-size: 25px;
+    }
+    .main {
+        width: 200px;
+
+    }
+  }
+
+h1{
+    color: #588c7e;
+    text-shadow:  2px 2px #96ceb4;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    background-color: #f2e394;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding: 3px;
+}
+button:hover{
+    background-color: #f2ae72;
+    transition: 0.3s;
+}
+
+.main {
+    background-color: rgb(220, 233, 226);
+    width: 500px;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 10px 10px 10px rgb(133, 146, 109);
+    margin:auto;
+    position:relative;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style: none;
+  }

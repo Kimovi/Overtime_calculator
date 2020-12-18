@@ -6,30 +6,34 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;1,300;1,400&display=swap" rel="stylesheet">
-
     <title>Overtime Calculator</title>
 </head>
 <body>
     <h1>Overtime calculator for Ondra💸</h1>
-    <div>
+    <div class="main">
+        <div>
         <labe for ="salary">Enter your salary </labe>
         <input id="salary1" type="text">
         <button class="salary">Submit</button>
-    </div>
-    <p>Your hourly rate is </p>
-    <div>
-        <label for="date">Select date</label>
-        <input type="date" id="date">
+        </div>
+        <p>Your hourly rate is </p>
+        <div>
+            <label for="date">Select date</label>
+            <input type="date" id="date">
+        </div>
+
+        <div>
+            <label for="hours">Hours of work</label>
+            <input id="hours" type="text">
+            <button class="Add">Add</button><br>
+        </div>
+        <ul>
+            <li>This is overtime date and hours<button>Edit</button><button>Update</button><button>Delete</button></li>
+            <li>This is overtime date and hours<button>Edit</button><button>Update</button><button>Delete</button></li>
+        </ul>
+        <p>You've worked ${} hours and this would be ${}£</p>
     </div>
 
-    <div>
-        <label for="hours">Hours of work</label>
-        <input id="hours" type="text">
-        <button class="Add">Add</button><br>
-    </div>
-
-    <p>You've worked ${} hours and this would be ${}£</p>
-    
     <script src="app.js"></script> 
 </body>
 </html>
