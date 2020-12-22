@@ -6,16 +6,9 @@ body {
 }
 
 @media only screen and (max-width: 600px) {
-    body {
-        background: linear-gradient(to right, rgba(34,193,195,1), rgba(253,187,45,1));
-    }
-    h1{
-        font-size: 25px;
-    }
-    .main {
-        width: 200px;
-
-    }
+    body {background: linear-gradient(to right, rgba(34,193,195,1), rgba(253,187,45,1));}
+    h1 {font-size: 25px;}
+    .main {width: 200px;}
   }
 
 h1{
@@ -39,7 +32,7 @@ button:hover{
 
 .main {
     background-color: rgb(220, 233, 226);
-    width: 500px;
+    width: 600px;
     text-align: center;
     padding: 20px;
     box-shadow: 10px 10px 10px rgb(133, 146, 109);
@@ -48,6 +41,7 @@ button:hover{
 }
 
 li {
+    display: inline-block;
     margin-bottom: 10px;
 }
 
