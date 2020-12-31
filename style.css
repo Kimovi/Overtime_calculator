@@ -5,12 +5,6 @@ body {
     text-align: center;
 }
 
-@media only screen and (max-width: 600px) {
-    body {background: linear-gradient(to right, rgba(34,193,195,1), rgba(253,187,45,1));}
-    h1 {font-size: 25px;}
-    .main {width: 200px;}
-  }
-
 h1{
     color: #588c7e;
     text-shadow:  2px 2px #96ceb4;
@@ -40,11 +34,27 @@ button:hover{
     position:relative;
 }
 
+input {
+    width : 130px;
+}
+
 li {
     display: inline-block;
     margin-bottom: 10px;
+    
 }
 
 ul {
     list-style: none;
+    margin-left: -16px;
   }
+
+@media screen and (max-width: 480px) { 
+    body {background: linear-gradient(to right, rgba(34,193,195,1), rgba(253,187,45,1));}
+    h1 {font-size: 20px;}
+    .main {width: 250px;}
+    ul {
+        margin-left: -16px;
+    }
+    input {width: 70px;}
+}
