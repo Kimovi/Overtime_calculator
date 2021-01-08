@@ -21,7 +21,7 @@ document.querySelector(".salary").addEventListener("click", function(){
 document.querySelector(".Add").addEventListener("click", function(){
     data.date.push(date.value);
     data.hours.push(hours.value);  
-    const addHTML = `<li><strong>${data.date[i]}</strong> You have worked ${data.hours[i]} hours</li><button class="edit">Edit</button><button class="update">Update</button><button class="delete">Delete</button>`
+    const addHTML = `<div><li><strong>${data.date[i]}</strong> You have worked ${data.hours[i]} hours</li><button class="edit">Edit</button><button class="update">Update</button><button class="delete">Delete</button></div>`
     document.querySelector('ul').insertAdjacentHTML('afterbegin', addHTML);
     i++;
 });
@@ -48,7 +48,6 @@ document.getElementById('list').addEventListener('click', function(e) {
     console.log('update')
     }  
     if(tgt.classList.contains('delete')){
-        console.log(tgt.closest('li'))
         tgt.parentNode.remove();
     }
 });
