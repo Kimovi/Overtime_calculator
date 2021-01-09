@@ -8,3 +8,8 @@ Your overtime pays are calculated before tax
 
 # Deployed! 
 https://overtime-calculator.netlify.app/
+
+
+# Improvements needed
+- validation check for input box
+- Update button function

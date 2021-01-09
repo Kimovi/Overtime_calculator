@@ -5,49 +5,65 @@ let hours = document.getElementById('hours');
 let i =0;
 const data = {
     date : [],
-    hours : []
+    hours : [],
+    counter : []
 }
-
-document.querySelector(".salary").addEventListener("click", function(){
+document.querySelector('.salary').addEventListener('click', function(){
     hourlyRate = parseInt(salary.value);
     hourlyRate = Math.floor((hourlyRate / 12 / 161) * 1.5);
-    document.querySelector("p").insertAdjacentHTML('beforeend', '<strong>'+hourlyRate+'</strong>');
-    const disabled = document.querySelectorAll(".disabled");
+    const disabled = document.querySelectorAll('.disabled');
     for (let i = 0; i < disabled.length; i++){
-        disabled[i].removeAttribute("disabled")
+        disabled[i].removeAttribute('disabled')
     }
+    //Enable text in 'p' element
+    document.getElementById('hourlyRate').style.display = 'block';    
+    document.getElementById('hourlyRate').insertAdjacentHTML('beforeend', '<strong>'+hourlyRate+'</strong>'); 
 })
 
-document.querySelector(".Add").addEventListener("click", function(){
+document.querySelector('.Add').addEventListener('click', function(){
     data.date.push(date.value);
     data.hours.push(hours.value);  
-    const addHTML = `<div><li><strong>${data.date[i]}</strong> You have worked ${data.hours[i]} hours</li><button class="edit">Edit</button><button class="update">Update</button><button class="delete">Delete</button></div>`
+    const addHTML = `<div id='${i}'><li><strong>${data.date[i]}</strong> You have worked ${data.hours[i]} hours</li><button class='edit'>Edit</button><button class='update'>Update</button><button class='delete'>Delete</button></div>`
     document.querySelector('ul').insertAdjacentHTML('afterbegin', addHTML);
+    data.counter.push(i);
     i++;
+
+    //Enable text in 'p' element
+    document.getElementById('total').style.display = 'block';
+    clear();    
 });
 
-// function addTotal (){
-//     if(i>1){
-//         console.log('has child node')
-//         // const hoursSum = data.hours.reduce((el1, el2) => el1+el2)
-//         const sumHTML = `<p>You\'ve worked ${data.hours} hours and this would be ${data.hours}£</p>`
-//         document.querySelector('div').insertAdjacentHTML('beforeend', sumHTML);
-//     }
-// };
-// addTotal();
+function clear(){
+    document.getElementById('date').value = '';
+    document.getElementById('hours').value = '';
+};
 
 document.getElementById('list').addEventListener('click', function(e) {
     const tgt = e.target;
     const parent = tgt.closest('li');
+    const targetID = tgt.parentNode.id;
 
     if(tgt.classList.contains('edit')){
-        console.log('edit')
+        date.value = data.date[targetID];
+        hours.value = data.hours[targetID];
+        date.style.color = 'red';
+        hours.style.color = 'red';
 
-    }    
-    if(tgt.classList.contains('update')){
-    console.log('update')
-    }  
-    if(tgt.classList.contains('delete')){
+    } else if(tgt.classList.contains('update')){
+        console.log('update')
+        // console.log(document.getElementById('date').value, document.getElementById('hours').value);
+        data.date.splice(targetID, 1, date.value);
+        data.hours.splice(targetID, 1, hours.value);
+        let currentNode = tgt.parentNode.childNodes[0];
+        document.getElementById(targetID).innerHTML.replace(data.date[targetID], 'IIII');
+
+        clear();
+    } else if(tgt.classList.contains('delete')){
+        //remove HTML tag contains 'delete' element
         tgt.parentNode.remove();
+        //remove data from 'data' object
+        data.date.splice(targetID, 1)
+        data.hours.splice(targetID, 1)
+        data.counter.splice(targetID, 1)
     }
 });

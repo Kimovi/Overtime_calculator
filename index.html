@@ -11,13 +11,18 @@
 </head>
 <body>
     <h1>Overtime calculator for Ondra💸</h1>
+    <p>Have you worked some extra hours this month?
+        We will keep you on track efficiently!<br>
+        Just submit your annual salary, date and hours of overtimes. It it calculate it for you!<br><br>
+        Your hourly rate is calculated before tax and as 1.5 rate.
+    </p>
     <div class="main">
         <div>
         <labe for ="salary">Enter your salary </labe>
         <input id="salary1" type="text">
         <button class="salary">Submit</button>
         </div>
-        <p>Your hourly rate is </p>
+        <p id="hourlyRate">Your hourly rate is </p>
         <div>
             <label for="date">Select date</label>
             <input type="date" class="disabled" id="date" disabled>
@@ -30,6 +35,7 @@
         </div>
             <ul id="list">
             </ul> 
+        <p id="total">You've worked ${data.hours} hours and this would be ${data.hours}£</p>
     </div>
 
     <script src="app.js"></script> 
