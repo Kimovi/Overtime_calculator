@@ -12,4 +12,3 @@ https://overtime-calculator.netlify.app/
 
 # Improvements needed
 - validation check for input box
-- Update button function

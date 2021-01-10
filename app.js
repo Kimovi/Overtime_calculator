@@ -8,6 +8,7 @@ const data = {
     hours : [],
     counter : []
 }
+
 document.querySelector('.salary').addEventListener('click', function(){
     hourlyRate = parseInt(salary.value);
     hourlyRate = Math.floor((hourlyRate / 12 / 161) * 1.5);
@@ -28,14 +29,22 @@ document.querySelector('.Add').addEventListener('click', function(){
     data.counter.push(i);
     i++;
 
+    const sumHours = sum(data.hours);
+    document.getElementById('total').innerHTML=`You've worked <strong>${sumHours}</strong> hours and this would be <strong>£${sumHours * hourlyRate}</strong>`;
+
     //Enable text in 'p' element
     document.getElementById('total').style.display = 'block';
     clear();    
 });
 
+function sum (el){
+    const newArr = el.map(el=> Number(el));
+    return newArr.reduce((el, el1) => el + el1);
+};
+
 function clear(){
-    document.getElementById('date').value = '';
-    document.getElementById('hours').value = '';
+    date.value = '';
+    hours.value = '';
 };
 
 document.getElementById('list').addEventListener('click', function(e) {
@@ -46,8 +55,10 @@ document.getElementById('list').addEventListener('click', function(e) {
     if(tgt.classList.contains('edit')){
         date.value = data.date[targetID];
         hours.value = data.hours[targetID];
-        date.style.color = 'red';
-        hours.style.color = 'red';
+        date.style.color = 'rgb(236, 141, 32)';
+        hours.style.color = 'rgb(236, 141, 32)';
+        date.style.borderColor = 'rgb(236, 141, 32)';
+        hours.style.borderColor = 'rgb(236, 141, 32)';
 
     } else if(tgt.classList.contains('update')){
         console.log('update')
@@ -55,9 +66,16 @@ document.getElementById('list').addEventListener('click', function(e) {
         data.date.splice(targetID, 1, date.value);
         data.hours.splice(targetID, 1, hours.value);
         let currentNode = tgt.parentNode.childNodes[0];
-        document.getElementById(targetID).innerHTML.replace(data.date[targetID], 'IIII');
+        currentNode.innerHTML=`<div id='${targetID}'><li><strong>${data.date[targetID]}</strong> You have worked ${data.hours[targetID]} hours</li>`;
+
+        //disable the style when 'update' completed
+        date.style.color = '';
+        hours.style.color = '';
+        date.style.borderColor = '';
+        hours.style.borderColor = '';
 
         clear();
+
     } else if(tgt.classList.contains('delete')){
         //remove HTML tag contains 'delete' element
         tgt.parentNode.remove();

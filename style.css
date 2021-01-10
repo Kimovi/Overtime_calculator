@@ -52,6 +52,10 @@ input {
     background-color: none;
 }
 
+#hours, #date {
+    border-color: none;
+}
+
 li {
     display: inline-block;
     margin-bottom: 10px;
