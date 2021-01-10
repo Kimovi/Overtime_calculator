@@ -74,6 +74,9 @@ document.getElementById('list').addEventListener('click', function(e) {
         date.style.borderColor = '';
         hours.style.borderColor = '';
 
+        const sumHours = sum(data.hours);
+        document.getElementById('total').innerHTML=`You've worked <strong>${sumHours}</strong> hours and this would be <strong>£${sumHours * hourlyRate}</strong>`;
+    
         clear();
 
     } else if(tgt.classList.contains('delete')){
