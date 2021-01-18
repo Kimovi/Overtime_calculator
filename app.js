@@ -10,31 +10,41 @@ const data = {
 }
 
 document.querySelector('.salary').addEventListener('click', function(){
-    hourlyRate = parseInt(salary.value);
-    hourlyRate = Math.floor((hourlyRate / 12 / 161) * 1.5);
-    const disabled = document.querySelectorAll('.disabled');
-    for (let i = 0; i < disabled.length; i++){
-        disabled[i].removeAttribute('disabled') //When 'submit' button clicked, two input box on the bottom will be enabled
+    if(salary.value > 0){
+        hourlyRate = parseInt(salary.value);
+        hourlyRate = Math.floor((hourlyRate / 12 / 161) * 1.5);
+        const disabled = document.querySelectorAll('.disabled');
+        for (let i = 0; i < disabled.length; i++){
+            disabled[i].removeAttribute('disabled') //When 'submit' button clicked, two input box on the bottom will be enabled
+        }
+        //Enable text in 'p' element
+        document.getElementById('hourlyRate').style.display = 'block';    
+        document.getElementById('hourlyRate').insertAdjacentHTML('beforeend', '<strong>'+hourlyRate+'</strong>'); 
+    } else {
+        alert("Please input numbers only.")
+        salary.value = '';
     }
-    //Enable text in 'p' element
-    document.getElementById('hourlyRate').style.display = 'block';    
-    document.getElementById('hourlyRate').insertAdjacentHTML('beforeend', '<strong>'+hourlyRate+'</strong>'); 
+    
 })
 
 document.querySelector('.Add').addEventListener('click', function(){
-    data.dateArr.push(date.value);
-    data.hoursArr.push(hours.value);  
-    const addHTML = `<div id='${i}'><li><strong>${data.dateArr[i]}</strong> You have worked ${data.hoursArr[i]} hours</li><button class='edit'>Edit</button><button class='update'>Update</button><button class='delete'>Delete</button></div>`
-    document.querySelector('ul').insertAdjacentHTML('afterbegin', addHTML);
-    data.counter.push(i);
-    i++;
+    if(date.value.length > 0 && hours.value.length >0 && hours.value >0){
+        data.dateArr.push(date.value);
+        data.hoursArr.push(hours.value);  
+        const addHTML = `<div id='${i}'><li><strong>${data.dateArr[i]}</strong> You have worked ${data.hoursArr[i]} hours</li><button class='edit'>Edit</button><button class='update'>Update</button><button class='delete'>Delete</button></div>`
+        document.querySelector('ul').insertAdjacentHTML('afterbegin', addHTML);
+        data.counter.push(i);
+        i++;
 
-    const sumHours = sum(data.hoursArr);
-    document.getElementById('total').innerHTML=`You've worked <strong>${sumHours}</strong> hours and this would be <strong>£${sumHours * hourlyRate}</strong>`;
+        const sumHours = sum(data.hoursArr);
+        document.getElementById('total').innerHTML=`You've worked <strong>${sumHours}</strong> hours and this would be <strong>£${sumHours * hourlyRate}</strong>`;
 
-    //Enable text in 'p' element
-    document.getElementById('total').style.display = 'block';
-    clear();    
+        //Enable text in 'p' element
+        document.getElementById('total').style.display = 'block';
+        clear();   
+    } else {
+        alert("Please select date and time, and input over-worked hours")
+    }
 });
 
 function sum (el){
@@ -49,7 +59,7 @@ function clear(){
 
 document.getElementById('list').addEventListener('click', function(e) {
     const tgt = e.target;
-    const parent = tgt.closest('li');
+    // const parent = tgt.closest('li');
     const targetID = tgt.parentNode.id;
 
     if(tgt.classList.contains('edit')){
@@ -61,8 +71,6 @@ document.getElementById('list').addEventListener('click', function(e) {
         hours.style.borderColor = 'rgb(236, 141, 32)';
 
     } else if(tgt.classList.contains('update')){
-        console.log('update')
-        // console.log(document.getElementById('date').value, document.getElementById('hours').value);
         data.dateArr.splice(targetID, 1, date.value);
         data.hoursArr.splice(targetID, 1, hours.value);
         let currentNode = tgt.parentNode.childNodes[0];
